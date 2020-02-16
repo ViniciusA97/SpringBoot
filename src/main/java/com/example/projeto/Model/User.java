@@ -7,19 +7,16 @@ import java.io.Serializable;
 @Table(name= "Usuario")
 public class User implements Serializable {
 
-    private static final long serialVersionUID= 1L;
-
-    @Column(name="idUsuario", columnDefinition = "INT")
     @Id
     @GeneratedValue
-    private long idUsuario;
+    private long id;
 
     public long getId() {
-        return idUsuario;
+        return id;
     }
 
-    public void setId(int idUser) {
-        this.idUsuario = idUser;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Column(name="name",columnDefinition = "VARCHAR(40)")
@@ -49,23 +46,15 @@ public class User implements Serializable {
         return email;
     }
 
-    public long getIdUser() {
-        return idUsuario;
-    }
-
-    public void setIdUser(long idUser) {
-        this.idUsuario = idUser;
-    }
-
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getPassword() {
+    public String getSenha() {
         return senha;
     }
 
-    public void setPassword(String password) {
-        this.senha = password;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }
