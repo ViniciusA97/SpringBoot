@@ -4,35 +4,42 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name= "Usuario")
-public class User implements Serializable {
+@Table(name= "client")
+public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue
     private long id;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     @Column(name="name",columnDefinition = "VARCHAR(40)")
     private String name;
+
     @Column(name="email",columnDefinition = "VARCHAR(40)")
     private String email;
-    @Column(name="senha",columnDefinition = "VARCHAR(40)")
+
+    @Column(name="senha",columnDefinition = "VARCHAR(100)")
     private String senha;
 
-    public User(String name, String email, String password) {
+    @Column(nullable = true, columnDefinition = "VARCHAR(60)")
+    private String accessToken = null;
+
+    private int active = 1;
+
+    public Usuario(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.senha = password;
     }
 
-    public User(){}
+    public Usuario(){}
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -56,5 +63,21 @@ public class User implements Serializable {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 }
