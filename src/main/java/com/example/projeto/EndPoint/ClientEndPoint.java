@@ -22,12 +22,11 @@ public class ClientEndPoint {
     //READ
     @GetMapping(path="/getAll")
     public ResponseEntity<?> getListClient(@RequestParam String email){
+        System.out.println("Chegou");
         Usuario user = this.userDAO.findByEmail(email);
         System.out.println(user);
-        if(user!=null && user.getAccessToken()!=null){
-            return new ResponseEntity<>(this.userDAO.findAll() , HttpStatus.OK);
-        }
-        return new ResponseEntity<>(new CustomErrorType("No Authorized."), HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(this.userDAO.findAll() , HttpStatus.OK);
+
     }
 
     //CREATE OK
