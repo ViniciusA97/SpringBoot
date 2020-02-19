@@ -20,18 +20,17 @@ public class Usuario implements Serializable {
     @Column(name="senha",columnDefinition = "VARCHAR(100)")
     private String senha;
 
-    @Column(nullable = true, columnDefinition = "VARCHAR(60)")
-    private String accessToken = null;
-
     private int active = 1;
 
-    public Usuario(String name, String email, String password) {
+
+    public Usuario(String name, String email, String senha) {
         this.name = name;
         this.email = email;
-        this.senha = password;
+        this.senha = senha;
     }
 
     public Usuario(){}
+
 
     public long getId() {
         return id;
@@ -73,11 +72,4 @@ public class Usuario implements Serializable {
         this.active = active;
     }
 
-    public String getAccessToken() {
-        return accessToken;
-    }
-
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-    }
 }
